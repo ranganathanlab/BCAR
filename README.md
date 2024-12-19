@@ -35,9 +35,11 @@ or
 ```bash
 pip install cython
 ```
-
+Then run
 ```bash
 python setup.py build
+```
+```bash
 python setup.py install
 ```
 
