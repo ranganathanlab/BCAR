@@ -4,12 +4,12 @@
 {
     "distutils": {
         "depends": [],
-        "name": "needleman_wunsch",
+        "name": "BCAR.needleman_wunsch",
         "sources": [
             "BCAR/needleman_wunsch.pyx"
         ]
     },
-    "module_name": "needleman_wunsch"
+    "module_name": "BCAR.needleman_wunsch"
 }
 END: Cython Metadata */
 
@@ -1229,8 +1229,8 @@ static CYTHON_INLINE float __PYX_NAN() {
   #endif
 #endif
 
-#define __PYX_HAVE__needleman_wunsch
-#define __PYX_HAVE_API__needleman_wunsch
+#define __PYX_HAVE__BCAR__needleman_wunsch
+#define __PYX_HAVE_API__BCAR__needleman_wunsch
 /* Early includes */
 #include <string.h>
 #include <stdlib.h>
@@ -2027,16 +2027,16 @@ static int __Pyx_InitStrings(__Pyx_StringTabEntry *t);
 
 /* Module declarations from "libc.stdlib" */
 
-/* Module declarations from "needleman_wunsch" */
-static int __pyx_f_16needleman_wunsch_max3(int, int, int); /*proto*/
-static int __pyx_f_16needleman_wunsch_get_score(int, int, int, int, int); /*proto*/
+/* Module declarations from "BCAR.needleman_wunsch" */
+static int __pyx_f_4BCAR_16needleman_wunsch_max3(int, int, int); /*proto*/
+static int __pyx_f_4BCAR_16needleman_wunsch_get_score(int, int, int, int, int); /*proto*/
 /* #### Code section: typeinfo ### */
 /* #### Code section: before_global_var ### */
-#define __Pyx_MODULE_NAME "needleman_wunsch"
-extern int __pyx_module_is_main_needleman_wunsch;
-int __pyx_module_is_main_needleman_wunsch = 0;
+#define __Pyx_MODULE_NAME "BCAR.needleman_wunsch"
+extern int __pyx_module_is_main_BCAR__needleman_wunsch;
+int __pyx_module_is_main_BCAR__needleman_wunsch = 0;
 
-/* Implementation of "needleman_wunsch" */
+/* Implementation of "BCAR.needleman_wunsch" */
 /* #### Code section: global_var ### */
 static PyObject *__pyx_builtin_MemoryError;
 static PyObject *__pyx_builtin_range;
@@ -2067,10 +2067,11 @@ static const char __pyx_k_aligned_query[] = "aligned_query";
 static const char __pyx_k_needleman_wunsch[] = "needleman_wunsch";
 static const char __pyx_k_asyncio_coroutines[] = "asyncio.coroutines";
 static const char __pyx_k_cline_in_traceback[] = "cline_in_traceback";
+static const char __pyx_k_BCAR_needleman_wunsch[] = "BCAR.needleman_wunsch";
 static const char __pyx_k_BCAR_needleman_wunsch_pyx[] = "BCAR/needleman_wunsch.pyx";
 static const char __pyx_k_Unable_to_allocate_memory_for_ma[] = "Unable to allocate memory for matrices.";
 /* #### Code section: decls ### */
-static PyObject *__pyx_pf_16needleman_wunsch_needleman_wunsch(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_query, PyObject *__pyx_v_reference, int __pyx_v_match, int __pyx_v_mismatch, int __pyx_v_gap_penalty); /* proto */
+static PyObject *__pyx_pf_4BCAR_16needleman_wunsch_needleman_wunsch(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_query, PyObject *__pyx_v_reference, int __pyx_v_match, int __pyx_v_mismatch, int __pyx_v_gap_penalty); /* proto */
 /* #### Code section: late_includes ### */
 /* #### Code section: module_state ### */
 typedef struct {
@@ -2106,9 +2107,10 @@ typedef struct {
   #endif
   #if CYTHON_USE_MODULE_STATE
   #endif
+  PyObject *__pyx_n_s_BCAR_needleman_wunsch;
   PyObject *__pyx_kp_s_BCAR_needleman_wunsch_pyx;
   PyObject *__pyx_n_s_MemoryError;
-  PyObject *__pyx_kp_s_Unable_to_allocate_memory_for_ma;
+  PyObject *__pyx_kp_u_Unable_to_allocate_memory_for_ma;
   PyObject *__pyx_n_s__4;
   PyObject *__pyx_n_s_aligned_query;
   PyObject *__pyx_n_s_asyncio_coroutines;
@@ -2181,9 +2183,10 @@ static int __pyx_m_clear(PyObject *m) {
   #ifdef __Pyx_FusedFunction_USED
   Py_CLEAR(clear_module_state->__pyx_FusedFunctionType);
   #endif
+  Py_CLEAR(clear_module_state->__pyx_n_s_BCAR_needleman_wunsch);
   Py_CLEAR(clear_module_state->__pyx_kp_s_BCAR_needleman_wunsch_pyx);
   Py_CLEAR(clear_module_state->__pyx_n_s_MemoryError);
-  Py_CLEAR(clear_module_state->__pyx_kp_s_Unable_to_allocate_memory_for_ma);
+  Py_CLEAR(clear_module_state->__pyx_kp_u_Unable_to_allocate_memory_for_ma);
   Py_CLEAR(clear_module_state->__pyx_n_s__4);
   Py_CLEAR(clear_module_state->__pyx_n_s_aligned_query);
   Py_CLEAR(clear_module_state->__pyx_n_s_asyncio_coroutines);
@@ -2234,9 +2237,10 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
   #ifdef __Pyx_FusedFunction_USED
   Py_VISIT(traverse_module_state->__pyx_FusedFunctionType);
   #endif
+  Py_VISIT(traverse_module_state->__pyx_n_s_BCAR_needleman_wunsch);
   Py_VISIT(traverse_module_state->__pyx_kp_s_BCAR_needleman_wunsch_pyx);
   Py_VISIT(traverse_module_state->__pyx_n_s_MemoryError);
-  Py_VISIT(traverse_module_state->__pyx_kp_s_Unable_to_allocate_memory_for_ma);
+  Py_VISIT(traverse_module_state->__pyx_kp_u_Unable_to_allocate_memory_for_ma);
   Py_VISIT(traverse_module_state->__pyx_n_s__4);
   Py_VISIT(traverse_module_state->__pyx_n_s_aligned_query);
   Py_VISIT(traverse_module_state->__pyx_n_s_asyncio_coroutines);
@@ -2303,9 +2307,10 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #endif
 #if CYTHON_USE_MODULE_STATE
 #endif
+#define __pyx_n_s_BCAR_needleman_wunsch __pyx_mstate_global->__pyx_n_s_BCAR_needleman_wunsch
 #define __pyx_kp_s_BCAR_needleman_wunsch_pyx __pyx_mstate_global->__pyx_kp_s_BCAR_needleman_wunsch_pyx
 #define __pyx_n_s_MemoryError __pyx_mstate_global->__pyx_n_s_MemoryError
-#define __pyx_kp_s_Unable_to_allocate_memory_for_ma __pyx_mstate_global->__pyx_kp_s_Unable_to_allocate_memory_for_ma
+#define __pyx_kp_u_Unable_to_allocate_memory_for_ma __pyx_mstate_global->__pyx_kp_u_Unable_to_allocate_memory_for_ma
 #define __pyx_n_s__4 __pyx_mstate_global->__pyx_n_s__4
 #define __pyx_n_s_aligned_query __pyx_mstate_global->__pyx_n_s_aligned_query
 #define __pyx_n_s_asyncio_coroutines __pyx_mstate_global->__pyx_n_s_asyncio_coroutines
@@ -2338,7 +2343,7 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #define __pyx_codeobj__3 __pyx_mstate_global->__pyx_codeobj__3
 /* #### Code section: module_code ### */
 
-/* "needleman_wunsch.pyx":7
+/* "BCAR/needleman_wunsch.pyx":7
  * 
  * @cython.cfunc
  * cdef int max3(int a, int b, int c):             # <<<<<<<<<<<<<<
@@ -2346,14 +2351,14 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
  * 
  */
 
-static int __pyx_f_16needleman_wunsch_max3(int __pyx_v_a, int __pyx_v_b, int __pyx_v_c) {
+static int __pyx_f_4BCAR_16needleman_wunsch_max3(int __pyx_v_a, int __pyx_v_b, int __pyx_v_c) {
   int __pyx_r;
   int __pyx_t_1;
   int __pyx_t_2;
   int __pyx_t_3;
   int __pyx_t_4;
 
-  /* "needleman_wunsch.pyx":8
+  /* "BCAR/needleman_wunsch.pyx":8
  * @cython.cfunc
  * cdef int max3(int a, int b, int c):
  *     return max(a, max(b, c))             # <<<<<<<<<<<<<<
@@ -2379,7 +2384,7 @@ static int __pyx_f_16needleman_wunsch_max3(int __pyx_v_a, int __pyx_v_b, int __p
   __pyx_r = __pyx_t_2;
   goto __pyx_L0;
 
-  /* "needleman_wunsch.pyx":7
+  /* "BCAR/needleman_wunsch.pyx":7
  * 
  * @cython.cfunc
  * cdef int max3(int a, int b, int c):             # <<<<<<<<<<<<<<
@@ -2392,7 +2397,7 @@ static int __pyx_f_16needleman_wunsch_max3(int __pyx_v_a, int __pyx_v_b, int __p
   return __pyx_r;
 }
 
-/* "needleman_wunsch.pyx":11
+/* "BCAR/needleman_wunsch.pyx":11
  * 
  * @cython.cfunc
  * cdef int get_score(int b1, int b2, int match, int mismatch, int gap_penalty):             # <<<<<<<<<<<<<<
@@ -2400,12 +2405,12 @@ static int __pyx_f_16needleman_wunsch_max3(int __pyx_v_a, int __pyx_v_b, int __p
  *         return -gap_penalty
  */
 
-static int __pyx_f_16needleman_wunsch_get_score(int __pyx_v_b1, int __pyx_v_b2, int __pyx_v_match, int __pyx_v_mismatch, int __pyx_v_gap_penalty) {
+static int __pyx_f_4BCAR_16needleman_wunsch_get_score(int __pyx_v_b1, int __pyx_v_b2, int __pyx_v_match, int __pyx_v_mismatch, int __pyx_v_gap_penalty) {
   int __pyx_r;
   int __pyx_t_1;
   int __pyx_t_2;
 
-  /* "needleman_wunsch.pyx":12
+  /* "BCAR/needleman_wunsch.pyx":12
  * @cython.cfunc
  * cdef int get_score(int b1, int b2, int match, int mismatch, int gap_penalty):
  *     if b1 == 0 or b2 == 0:  # Gap             # <<<<<<<<<<<<<<
@@ -2423,7 +2428,7 @@ static int __pyx_f_16needleman_wunsch_get_score(int __pyx_v_b1, int __pyx_v_b2, 
   __pyx_L4_bool_binop_done:;
   if (__pyx_t_1) {
 
-    /* "needleman_wunsch.pyx":13
+    /* "BCAR/needleman_wunsch.pyx":13
  * cdef int get_score(int b1, int b2, int match, int mismatch, int gap_penalty):
  *     if b1 == 0 or b2 == 0:  # Gap
  *         return -gap_penalty             # <<<<<<<<<<<<<<
@@ -2433,7 +2438,7 @@ static int __pyx_f_16needleman_wunsch_get_score(int __pyx_v_b1, int __pyx_v_b2, 
     __pyx_r = (-__pyx_v_gap_penalty);
     goto __pyx_L0;
 
-    /* "needleman_wunsch.pyx":12
+    /* "BCAR/needleman_wunsch.pyx":12
  * @cython.cfunc
  * cdef int get_score(int b1, int b2, int match, int mismatch, int gap_penalty):
  *     if b1 == 0 or b2 == 0:  # Gap             # <<<<<<<<<<<<<<
@@ -2442,7 +2447,7 @@ static int __pyx_f_16needleman_wunsch_get_score(int __pyx_v_b1, int __pyx_v_b2, 
  */
   }
 
-  /* "needleman_wunsch.pyx":14
+  /* "BCAR/needleman_wunsch.pyx":14
  *     if b1 == 0 or b2 == 0:  # Gap
  *         return -gap_penalty
  *     elif b1 == b2:  # Match             # <<<<<<<<<<<<<<
@@ -2452,7 +2457,7 @@ static int __pyx_f_16needleman_wunsch_get_score(int __pyx_v_b1, int __pyx_v_b2, 
   __pyx_t_1 = (__pyx_v_b1 == __pyx_v_b2);
   if (__pyx_t_1) {
 
-    /* "needleman_wunsch.pyx":15
+    /* "BCAR/needleman_wunsch.pyx":15
  *         return -gap_penalty
  *     elif b1 == b2:  # Match
  *         return match             # <<<<<<<<<<<<<<
@@ -2462,7 +2467,7 @@ static int __pyx_f_16needleman_wunsch_get_score(int __pyx_v_b1, int __pyx_v_b2, 
     __pyx_r = __pyx_v_match;
     goto __pyx_L0;
 
-    /* "needleman_wunsch.pyx":14
+    /* "BCAR/needleman_wunsch.pyx":14
  *     if b1 == 0 or b2 == 0:  # Gap
  *         return -gap_penalty
  *     elif b1 == b2:  # Match             # <<<<<<<<<<<<<<
@@ -2471,7 +2476,7 @@ static int __pyx_f_16needleman_wunsch_get_score(int __pyx_v_b1, int __pyx_v_b2, 
  */
   }
 
-  /* "needleman_wunsch.pyx":17
+  /* "BCAR/needleman_wunsch.pyx":17
  *         return match
  *     else:  # Mismatch
  *         return -mismatch             # <<<<<<<<<<<<<<
@@ -2483,7 +2488,7 @@ static int __pyx_f_16needleman_wunsch_get_score(int __pyx_v_b1, int __pyx_v_b2, 
     goto __pyx_L0;
   }
 
-  /* "needleman_wunsch.pyx":11
+  /* "BCAR/needleman_wunsch.pyx":11
  * 
  * @cython.cfunc
  * cdef int get_score(int b1, int b2, int match, int mismatch, int gap_penalty):             # <<<<<<<<<<<<<<
@@ -2496,7 +2501,7 @@ static int __pyx_f_16needleman_wunsch_get_score(int __pyx_v_b1, int __pyx_v_b2, 
   return __pyx_r;
 }
 
-/* "needleman_wunsch.pyx":19
+/* "BCAR/needleman_wunsch.pyx":19
  *         return -mismatch
  * 
  * @cython.boundscheck(False)             # <<<<<<<<<<<<<<
@@ -2505,15 +2510,15 @@ static int __pyx_f_16needleman_wunsch_get_score(int __pyx_v_b1, int __pyx_v_b2, 
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_16needleman_wunsch_1needleman_wunsch(PyObject *__pyx_self, 
+static PyObject *__pyx_pw_4BCAR_16needleman_wunsch_1needleman_wunsch(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_16needleman_wunsch_1needleman_wunsch = {"needleman_wunsch", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_16needleman_wunsch_1needleman_wunsch, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_16needleman_wunsch_1needleman_wunsch(PyObject *__pyx_self, 
+static PyMethodDef __pyx_mdef_4BCAR_16needleman_wunsch_1needleman_wunsch = {"needleman_wunsch", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_4BCAR_16needleman_wunsch_1needleman_wunsch, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_4BCAR_16needleman_wunsch_1needleman_wunsch(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -2651,13 +2656,13 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       __Pyx_Arg_XDECREF_FASTCALL(values[__pyx_temp]);
     }
   }
-  __Pyx_AddTraceback("needleman_wunsch.needleman_wunsch", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("BCAR.needleman_wunsch.needleman_wunsch", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
   if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_query), (&PyList_Type), 1, "query", 1))) __PYX_ERR(0, 22, __pyx_L1_error)
   if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_reference), (&PyList_Type), 1, "reference", 1))) __PYX_ERR(0, 22, __pyx_L1_error)
-  __pyx_r = __pyx_pf_16needleman_wunsch_needleman_wunsch(__pyx_self, __pyx_v_query, __pyx_v_reference, __pyx_v_match, __pyx_v_mismatch, __pyx_v_gap_penalty);
+  __pyx_r = __pyx_pf_4BCAR_16needleman_wunsch_needleman_wunsch(__pyx_self, __pyx_v_query, __pyx_v_reference, __pyx_v_match, __pyx_v_mismatch, __pyx_v_gap_penalty);
 
   /* function exit code */
   goto __pyx_L0;
@@ -2674,7 +2679,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_16needleman_wunsch_needleman_wunsch(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_query, PyObject *__pyx_v_reference, int __pyx_v_match, int __pyx_v_mismatch, int __pyx_v_gap_penalty) {
+static PyObject *__pyx_pf_4BCAR_16needleman_wunsch_needleman_wunsch(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_query, PyObject *__pyx_v_reference, int __pyx_v_match, int __pyx_v_mismatch, int __pyx_v_gap_penalty) {
   int __pyx_v_q_len;
   int __pyx_v_r_len;
   int *__pyx_v_score_matrix;
@@ -2708,7 +2713,7 @@ static PyObject *__pyx_pf_16needleman_wunsch_needleman_wunsch(CYTHON_UNUSED PyOb
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("needleman_wunsch", 1);
 
-  /* "needleman_wunsch.pyx":25
+  /* "BCAR/needleman_wunsch.pyx":25
  *     int match=2, int mismatch=1, int gap_penalty=2
  * ):
  *     cdef int q_len = len(query)             # <<<<<<<<<<<<<<
@@ -2722,7 +2727,7 @@ static PyObject *__pyx_pf_16needleman_wunsch_needleman_wunsch(CYTHON_UNUSED PyOb
   __pyx_t_1 = __Pyx_PyList_GET_SIZE(__pyx_v_query); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(0, 25, __pyx_L1_error)
   __pyx_v_q_len = __pyx_t_1;
 
-  /* "needleman_wunsch.pyx":26
+  /* "BCAR/needleman_wunsch.pyx":26
  * ):
  *     cdef int q_len = len(query)
  *     cdef int r_len = len(reference)             # <<<<<<<<<<<<<<
@@ -2736,7 +2741,7 @@ static PyObject *__pyx_pf_16needleman_wunsch_needleman_wunsch(CYTHON_UNUSED PyOb
   __pyx_t_1 = __Pyx_PyList_GET_SIZE(__pyx_v_reference); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(0, 26, __pyx_L1_error)
   __pyx_v_r_len = __pyx_t_1;
 
-  /* "needleman_wunsch.pyx":27
+  /* "BCAR/needleman_wunsch.pyx":27
  *     cdef int q_len = len(query)
  *     cdef int r_len = len(reference)
  *     cdef int *score_matrix = <int*>malloc((q_len + 1) * (r_len + 1) * sizeof(int))             # <<<<<<<<<<<<<<
@@ -2745,7 +2750,7 @@ static PyObject *__pyx_pf_16needleman_wunsch_needleman_wunsch(CYTHON_UNUSED PyOb
  */
   __pyx_v_score_matrix = ((int *)malloc((((__pyx_v_q_len + 1) * (__pyx_v_r_len + 1)) * (sizeof(int)))));
 
-  /* "needleman_wunsch.pyx":28
+  /* "BCAR/needleman_wunsch.pyx":28
  *     cdef int r_len = len(reference)
  *     cdef int *score_matrix = <int*>malloc((q_len + 1) * (r_len + 1) * sizeof(int))
  *     cdef int *trace_matrix = <int*>malloc((q_len + 1) * (r_len + 1) * sizeof(int))             # <<<<<<<<<<<<<<
@@ -2754,7 +2759,7 @@ static PyObject *__pyx_pf_16needleman_wunsch_needleman_wunsch(CYTHON_UNUSED PyOb
  */
   __pyx_v_trace_matrix = ((int *)malloc((((__pyx_v_q_len + 1) * (__pyx_v_r_len + 1)) * (sizeof(int)))));
 
-  /* "needleman_wunsch.pyx":31
+  /* "BCAR/needleman_wunsch.pyx":31
  *     cdef int i, j, index, score_diag, score_up, score_left
  * 
  *     if score_matrix is NULL or trace_matrix is NULL:             # <<<<<<<<<<<<<<
@@ -2772,7 +2777,7 @@ static PyObject *__pyx_pf_16needleman_wunsch_needleman_wunsch(CYTHON_UNUSED PyOb
   __pyx_L4_bool_binop_done:;
   if (unlikely(__pyx_t_2)) {
 
-    /* "needleman_wunsch.pyx":32
+    /* "BCAR/needleman_wunsch.pyx":32
  * 
  *     if score_matrix is NULL or trace_matrix is NULL:
  *         raise MemoryError("Unable to allocate memory for matrices.")             # <<<<<<<<<<<<<<
@@ -2785,7 +2790,7 @@ static PyObject *__pyx_pf_16needleman_wunsch_needleman_wunsch(CYTHON_UNUSED PyOb
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __PYX_ERR(0, 32, __pyx_L1_error)
 
-    /* "needleman_wunsch.pyx":31
+    /* "BCAR/needleman_wunsch.pyx":31
  *     cdef int i, j, index, score_diag, score_up, score_left
  * 
  *     if score_matrix is NULL or trace_matrix is NULL:             # <<<<<<<<<<<<<<
@@ -2794,7 +2799,7 @@ static PyObject *__pyx_pf_16needleman_wunsch_needleman_wunsch(CYTHON_UNUSED PyOb
  */
   }
 
-  /* "needleman_wunsch.pyx":34
+  /* "BCAR/needleman_wunsch.pyx":34
  *         raise MemoryError("Unable to allocate memory for matrices.")
  * 
  *     memset(score_matrix, 0, (q_len + 1) * (r_len + 1) * sizeof(int))             # <<<<<<<<<<<<<<
@@ -2803,7 +2808,7 @@ static PyObject *__pyx_pf_16needleman_wunsch_needleman_wunsch(CYTHON_UNUSED PyOb
  */
   (void)(memset(__pyx_v_score_matrix, 0, (((__pyx_v_q_len + 1) * (__pyx_v_r_len + 1)) * (sizeof(int)))));
 
-  /* "needleman_wunsch.pyx":35
+  /* "BCAR/needleman_wunsch.pyx":35
  * 
  *     memset(score_matrix, 0, (q_len + 1) * (r_len + 1) * sizeof(int))
  *     memset(trace_matrix, 0, (q_len + 1) * (r_len + 1) * sizeof(int))             # <<<<<<<<<<<<<<
@@ -2812,7 +2817,7 @@ static PyObject *__pyx_pf_16needleman_wunsch_needleman_wunsch(CYTHON_UNUSED PyOb
  */
   (void)(memset(__pyx_v_trace_matrix, 0, (((__pyx_v_q_len + 1) * (__pyx_v_r_len + 1)) * (sizeof(int)))));
 
-  /* "needleman_wunsch.pyx":38
+  /* "BCAR/needleman_wunsch.pyx":38
  * 
  *     # Initialization
  *     for i in range(q_len + 1):             # <<<<<<<<<<<<<<
@@ -2824,7 +2829,7 @@ static PyObject *__pyx_pf_16needleman_wunsch_needleman_wunsch(CYTHON_UNUSED PyOb
   for (__pyx_t_7 = 0; __pyx_t_7 < __pyx_t_6; __pyx_t_7+=1) {
     __pyx_v_i = __pyx_t_7;
 
-    /* "needleman_wunsch.pyx":39
+    /* "BCAR/needleman_wunsch.pyx":39
  *     # Initialization
  *     for i in range(q_len + 1):
  *         score_matrix[i * (r_len + 1)] = -i * gap_penalty             # <<<<<<<<<<<<<<
@@ -2834,7 +2839,7 @@ static PyObject *__pyx_pf_16needleman_wunsch_needleman_wunsch(CYTHON_UNUSED PyOb
     (__pyx_v_score_matrix[(__pyx_v_i * (__pyx_v_r_len + 1))]) = ((-__pyx_v_i) * __pyx_v_gap_penalty);
   }
 
-  /* "needleman_wunsch.pyx":40
+  /* "BCAR/needleman_wunsch.pyx":40
  *     for i in range(q_len + 1):
  *         score_matrix[i * (r_len + 1)] = -i * gap_penalty
  *     for j in range(r_len + 1):             # <<<<<<<<<<<<<<
@@ -2846,7 +2851,7 @@ static PyObject *__pyx_pf_16needleman_wunsch_needleman_wunsch(CYTHON_UNUSED PyOb
   for (__pyx_t_7 = 0; __pyx_t_7 < __pyx_t_6; __pyx_t_7+=1) {
     __pyx_v_j = __pyx_t_7;
 
-    /* "needleman_wunsch.pyx":41
+    /* "BCAR/needleman_wunsch.pyx":41
  *         score_matrix[i * (r_len + 1)] = -i * gap_penalty
  *     for j in range(r_len + 1):
  *         score_matrix[j] = -j * gap_penalty             # <<<<<<<<<<<<<<
@@ -2856,7 +2861,7 @@ static PyObject *__pyx_pf_16needleman_wunsch_needleman_wunsch(CYTHON_UNUSED PyOb
     (__pyx_v_score_matrix[__pyx_v_j]) = ((-__pyx_v_j) * __pyx_v_gap_penalty);
   }
 
-  /* "needleman_wunsch.pyx":44
+  /* "BCAR/needleman_wunsch.pyx":44
  * 
  *     # Fill score and traceback matrices
  *     for i in range(1, q_len + 1):             # <<<<<<<<<<<<<<
@@ -2868,7 +2873,7 @@ static PyObject *__pyx_pf_16needleman_wunsch_needleman_wunsch(CYTHON_UNUSED PyOb
   for (__pyx_t_7 = 1; __pyx_t_7 < __pyx_t_6; __pyx_t_7+=1) {
     __pyx_v_i = __pyx_t_7;
 
-    /* "needleman_wunsch.pyx":45
+    /* "BCAR/needleman_wunsch.pyx":45
  *     # Fill score and traceback matrices
  *     for i in range(1, q_len + 1):
  *         for j in range(1, r_len + 1):             # <<<<<<<<<<<<<<
@@ -2880,7 +2885,7 @@ static PyObject *__pyx_pf_16needleman_wunsch_needleman_wunsch(CYTHON_UNUSED PyOb
     for (__pyx_t_10 = 1; __pyx_t_10 < __pyx_t_9; __pyx_t_10+=1) {
       __pyx_v_j = __pyx_t_10;
 
-      /* "needleman_wunsch.pyx":46
+      /* "BCAR/needleman_wunsch.pyx":46
  *     for i in range(1, q_len + 1):
  *         for j in range(1, r_len + 1):
  *             index = i * (r_len + 1) + j             # <<<<<<<<<<<<<<
@@ -2889,7 +2894,7 @@ static PyObject *__pyx_pf_16needleman_wunsch_needleman_wunsch(CYTHON_UNUSED PyOb
  */
       __pyx_v_index = ((__pyx_v_i * (__pyx_v_r_len + 1)) + __pyx_v_j);
 
-      /* "needleman_wunsch.pyx":47
+      /* "BCAR/needleman_wunsch.pyx":47
  *         for j in range(1, r_len + 1):
  *             index = i * (r_len + 1) + j
  *             score_diag = score_matrix[(i - 1) * (r_len + 1) + (j - 1)] + get_score(query[i - 1], reference[j - 1], match, mismatch, gap_penalty)             # <<<<<<<<<<<<<<
@@ -2908,10 +2913,10 @@ static PyObject *__pyx_pf_16needleman_wunsch_needleman_wunsch(CYTHON_UNUSED PyOb
       }
       __pyx_t_11 = (__pyx_v_j - 1);
       __pyx_t_13 = __Pyx_PyInt_As_int(PyList_GET_ITEM(__pyx_v_reference, __pyx_t_11)); if (unlikely((__pyx_t_13 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 47, __pyx_L1_error)
-      __pyx_t_14 = __pyx_f_16needleman_wunsch_get_score(__pyx_t_12, __pyx_t_13, __pyx_v_match, __pyx_v_mismatch, __pyx_v_gap_penalty); if (unlikely(__pyx_t_14 == ((int)-1) && PyErr_Occurred())) __PYX_ERR(0, 47, __pyx_L1_error)
+      __pyx_t_14 = __pyx_f_4BCAR_16needleman_wunsch_get_score(__pyx_t_12, __pyx_t_13, __pyx_v_match, __pyx_v_mismatch, __pyx_v_gap_penalty); if (unlikely(__pyx_t_14 == ((int)-1) && PyErr_Occurred())) __PYX_ERR(0, 47, __pyx_L1_error)
       __pyx_v_score_diag = ((__pyx_v_score_matrix[(((__pyx_v_i - 1) * (__pyx_v_r_len + 1)) + (__pyx_v_j - 1))]) + __pyx_t_14);
 
-      /* "needleman_wunsch.pyx":48
+      /* "BCAR/needleman_wunsch.pyx":48
  *             index = i * (r_len + 1) + j
  *             score_diag = score_matrix[(i - 1) * (r_len + 1) + (j - 1)] + get_score(query[i - 1], reference[j - 1], match, mismatch, gap_penalty)
  *             score_up = score_matrix[(i - 1) * (r_len + 1) + j] - gap_penalty             # <<<<<<<<<<<<<<
@@ -2920,7 +2925,7 @@ static PyObject *__pyx_pf_16needleman_wunsch_needleman_wunsch(CYTHON_UNUSED PyOb
  */
       __pyx_v_score_up = ((__pyx_v_score_matrix[(((__pyx_v_i - 1) * (__pyx_v_r_len + 1)) + __pyx_v_j)]) - __pyx_v_gap_penalty);
 
-      /* "needleman_wunsch.pyx":49
+      /* "BCAR/needleman_wunsch.pyx":49
  *             score_diag = score_matrix[(i - 1) * (r_len + 1) + (j - 1)] + get_score(query[i - 1], reference[j - 1], match, mismatch, gap_penalty)
  *             score_up = score_matrix[(i - 1) * (r_len + 1) + j] - gap_penalty
  *             score_left = score_matrix[i * (r_len + 1) + (j - 1)] - gap_penalty             # <<<<<<<<<<<<<<
@@ -2929,17 +2934,17 @@ static PyObject *__pyx_pf_16needleman_wunsch_needleman_wunsch(CYTHON_UNUSED PyOb
  */
       __pyx_v_score_left = ((__pyx_v_score_matrix[((__pyx_v_i * (__pyx_v_r_len + 1)) + (__pyx_v_j - 1))]) - __pyx_v_gap_penalty);
 
-      /* "needleman_wunsch.pyx":50
+      /* "BCAR/needleman_wunsch.pyx":50
  *             score_up = score_matrix[(i - 1) * (r_len + 1) + j] - gap_penalty
  *             score_left = score_matrix[i * (r_len + 1) + (j - 1)] - gap_penalty
  *             score_matrix[index] = max3(score_diag, score_up, score_left)             # <<<<<<<<<<<<<<
  *             if score_matrix[index] == score_diag:
  *                 trace_matrix[index] = 1  # Diagonal
  */
-      __pyx_t_14 = __pyx_f_16needleman_wunsch_max3(__pyx_v_score_diag, __pyx_v_score_up, __pyx_v_score_left); if (unlikely(__pyx_t_14 == ((int)-1) && PyErr_Occurred())) __PYX_ERR(0, 50, __pyx_L1_error)
+      __pyx_t_14 = __pyx_f_4BCAR_16needleman_wunsch_max3(__pyx_v_score_diag, __pyx_v_score_up, __pyx_v_score_left); if (unlikely(__pyx_t_14 == ((int)-1) && PyErr_Occurred())) __PYX_ERR(0, 50, __pyx_L1_error)
       (__pyx_v_score_matrix[__pyx_v_index]) = __pyx_t_14;
 
-      /* "needleman_wunsch.pyx":51
+      /* "BCAR/needleman_wunsch.pyx":51
  *             score_left = score_matrix[i * (r_len + 1) + (j - 1)] - gap_penalty
  *             score_matrix[index] = max3(score_diag, score_up, score_left)
  *             if score_matrix[index] == score_diag:             # <<<<<<<<<<<<<<
@@ -2949,7 +2954,7 @@ static PyObject *__pyx_pf_16needleman_wunsch_needleman_wunsch(CYTHON_UNUSED PyOb
       __pyx_t_2 = ((__pyx_v_score_matrix[__pyx_v_index]) == __pyx_v_score_diag);
       if (__pyx_t_2) {
 
-        /* "needleman_wunsch.pyx":52
+        /* "BCAR/needleman_wunsch.pyx":52
  *             score_matrix[index] = max3(score_diag, score_up, score_left)
  *             if score_matrix[index] == score_diag:
  *                 trace_matrix[index] = 1  # Diagonal             # <<<<<<<<<<<<<<
@@ -2958,7 +2963,7 @@ static PyObject *__pyx_pf_16needleman_wunsch_needleman_wunsch(CYTHON_UNUSED PyOb
  */
         (__pyx_v_trace_matrix[__pyx_v_index]) = 1;
 
-        /* "needleman_wunsch.pyx":51
+        /* "BCAR/needleman_wunsch.pyx":51
  *             score_left = score_matrix[i * (r_len + 1) + (j - 1)] - gap_penalty
  *             score_matrix[index] = max3(score_diag, score_up, score_left)
  *             if score_matrix[index] == score_diag:             # <<<<<<<<<<<<<<
@@ -2968,7 +2973,7 @@ static PyObject *__pyx_pf_16needleman_wunsch_needleman_wunsch(CYTHON_UNUSED PyOb
         goto __pyx_L14;
       }
 
-      /* "needleman_wunsch.pyx":53
+      /* "BCAR/needleman_wunsch.pyx":53
  *             if score_matrix[index] == score_diag:
  *                 trace_matrix[index] = 1  # Diagonal
  *             elif score_matrix[index] == score_up:             # <<<<<<<<<<<<<<
@@ -2978,7 +2983,7 @@ static PyObject *__pyx_pf_16needleman_wunsch_needleman_wunsch(CYTHON_UNUSED PyOb
       __pyx_t_2 = ((__pyx_v_score_matrix[__pyx_v_index]) == __pyx_v_score_up);
       if (__pyx_t_2) {
 
-        /* "needleman_wunsch.pyx":54
+        /* "BCAR/needleman_wunsch.pyx":54
  *                 trace_matrix[index] = 1  # Diagonal
  *             elif score_matrix[index] == score_up:
  *                 trace_matrix[index] = 2  # Up             # <<<<<<<<<<<<<<
@@ -2987,7 +2992,7 @@ static PyObject *__pyx_pf_16needleman_wunsch_needleman_wunsch(CYTHON_UNUSED PyOb
  */
         (__pyx_v_trace_matrix[__pyx_v_index]) = 2;
 
-        /* "needleman_wunsch.pyx":53
+        /* "BCAR/needleman_wunsch.pyx":53
  *             if score_matrix[index] == score_diag:
  *                 trace_matrix[index] = 1  # Diagonal
  *             elif score_matrix[index] == score_up:             # <<<<<<<<<<<<<<
@@ -2997,7 +3002,7 @@ static PyObject *__pyx_pf_16needleman_wunsch_needleman_wunsch(CYTHON_UNUSED PyOb
         goto __pyx_L14;
       }
 
-      /* "needleman_wunsch.pyx":56
+      /* "BCAR/needleman_wunsch.pyx":56
  *                 trace_matrix[index] = 2  # Up
  *             else:
  *                 trace_matrix[index] = 3  # Left             # <<<<<<<<<<<<<<
@@ -3011,7 +3016,7 @@ static PyObject *__pyx_pf_16needleman_wunsch_needleman_wunsch(CYTHON_UNUSED PyOb
     }
   }
 
-  /* "needleman_wunsch.pyx":59
+  /* "BCAR/needleman_wunsch.pyx":59
  * 
  *     # Traceback
  *     cdef list aligned_query = []             # <<<<<<<<<<<<<<
@@ -3023,7 +3028,7 @@ static PyObject *__pyx_pf_16needleman_wunsch_needleman_wunsch(CYTHON_UNUSED PyOb
   __pyx_v_aligned_query = ((PyObject*)__pyx_t_4);
   __pyx_t_4 = 0;
 
-  /* "needleman_wunsch.pyx":60
+  /* "BCAR/needleman_wunsch.pyx":60
  *     # Traceback
  *     cdef list aligned_query = []
  *     i, j = q_len, r_len             # <<<<<<<<<<<<<<
@@ -3035,7 +3040,7 @@ static PyObject *__pyx_pf_16needleman_wunsch_needleman_wunsch(CYTHON_UNUSED PyOb
   __pyx_v_i = __pyx_t_7;
   __pyx_v_j = __pyx_t_10;
 
-  /* "needleman_wunsch.pyx":61
+  /* "BCAR/needleman_wunsch.pyx":61
  *     cdef list aligned_query = []
  *     i, j = q_len, r_len
  *     while i > 0 or j > 0:             # <<<<<<<<<<<<<<
@@ -3054,7 +3059,7 @@ static PyObject *__pyx_pf_16needleman_wunsch_needleman_wunsch(CYTHON_UNUSED PyOb
     __pyx_L17_bool_binop_done:;
     if (!__pyx_t_2) break;
 
-    /* "needleman_wunsch.pyx":62
+    /* "BCAR/needleman_wunsch.pyx":62
  *     i, j = q_len, r_len
  *     while i > 0 or j > 0:
  *         if i > 0 and j > 0 and trace_matrix[i * (r_len + 1) + j] == 1:  # Diagonal             # <<<<<<<<<<<<<<
@@ -3078,7 +3083,7 @@ static PyObject *__pyx_pf_16needleman_wunsch_needleman_wunsch(CYTHON_UNUSED PyOb
     __pyx_L20_bool_binop_done:;
     if (__pyx_t_2) {
 
-      /* "needleman_wunsch.pyx":63
+      /* "BCAR/needleman_wunsch.pyx":63
  *     while i > 0 or j > 0:
  *         if i > 0 and j > 0 and trace_matrix[i * (r_len + 1) + j] == 1:  # Diagonal
  *             aligned_query.append(query[i - 1])             # <<<<<<<<<<<<<<
@@ -3095,7 +3100,7 @@ static PyObject *__pyx_pf_16needleman_wunsch_needleman_wunsch(CYTHON_UNUSED PyOb
       __pyx_t_15 = __Pyx_PyList_Append(__pyx_v_aligned_query, __pyx_t_4); if (unlikely(__pyx_t_15 == ((int)-1))) __PYX_ERR(0, 63, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-      /* "needleman_wunsch.pyx":64
+      /* "BCAR/needleman_wunsch.pyx":64
  *         if i > 0 and j > 0 and trace_matrix[i * (r_len + 1) + j] == 1:  # Diagonal
  *             aligned_query.append(query[i - 1])
  *             i -= 1             # <<<<<<<<<<<<<<
@@ -3104,7 +3109,7 @@ static PyObject *__pyx_pf_16needleman_wunsch_needleman_wunsch(CYTHON_UNUSED PyOb
  */
       __pyx_v_i = (__pyx_v_i - 1);
 
-      /* "needleman_wunsch.pyx":65
+      /* "BCAR/needleman_wunsch.pyx":65
  *             aligned_query.append(query[i - 1])
  *             i -= 1
  *             j -= 1             # <<<<<<<<<<<<<<
@@ -3113,7 +3118,7 @@ static PyObject *__pyx_pf_16needleman_wunsch_needleman_wunsch(CYTHON_UNUSED PyOb
  */
       __pyx_v_j = (__pyx_v_j - 1);
 
-      /* "needleman_wunsch.pyx":62
+      /* "BCAR/needleman_wunsch.pyx":62
  *     i, j = q_len, r_len
  *     while i > 0 or j > 0:
  *         if i > 0 and j > 0 and trace_matrix[i * (r_len + 1) + j] == 1:  # Diagonal             # <<<<<<<<<<<<<<
@@ -3123,7 +3128,7 @@ static PyObject *__pyx_pf_16needleman_wunsch_needleman_wunsch(CYTHON_UNUSED PyOb
       goto __pyx_L19;
     }
 
-    /* "needleman_wunsch.pyx":66
+    /* "BCAR/needleman_wunsch.pyx":66
  *             i -= 1
  *             j -= 1
  *         elif i > 0 and (j == 0 or trace_matrix[i * (r_len + 1) + j] == 2):  # Up             # <<<<<<<<<<<<<<
@@ -3147,7 +3152,7 @@ static PyObject *__pyx_pf_16needleman_wunsch_needleman_wunsch(CYTHON_UNUSED PyOb
     __pyx_L23_bool_binop_done:;
     if (__pyx_t_2) {
 
-      /* "needleman_wunsch.pyx":67
+      /* "BCAR/needleman_wunsch.pyx":67
  *             j -= 1
  *         elif i > 0 and (j == 0 or trace_matrix[i * (r_len + 1) + j] == 2):  # Up
  *             aligned_query.append(0)  # Gap in reference             # <<<<<<<<<<<<<<
@@ -3156,7 +3161,7 @@ static PyObject *__pyx_pf_16needleman_wunsch_needleman_wunsch(CYTHON_UNUSED PyOb
  */
       __pyx_t_15 = __Pyx_PyList_Append(__pyx_v_aligned_query, __pyx_int_0); if (unlikely(__pyx_t_15 == ((int)-1))) __PYX_ERR(0, 67, __pyx_L1_error)
 
-      /* "needleman_wunsch.pyx":68
+      /* "BCAR/needleman_wunsch.pyx":68
  *         elif i > 0 and (j == 0 or trace_matrix[i * (r_len + 1) + j] == 2):  # Up
  *             aligned_query.append(0)  # Gap in reference
  *             i -= 1             # <<<<<<<<<<<<<<
@@ -3165,7 +3170,7 @@ static PyObject *__pyx_pf_16needleman_wunsch_needleman_wunsch(CYTHON_UNUSED PyOb
  */
       __pyx_v_i = (__pyx_v_i - 1);
 
-      /* "needleman_wunsch.pyx":66
+      /* "BCAR/needleman_wunsch.pyx":66
  *             i -= 1
  *             j -= 1
  *         elif i > 0 and (j == 0 or trace_matrix[i * (r_len + 1) + j] == 2):  # Up             # <<<<<<<<<<<<<<
@@ -3175,7 +3180,7 @@ static PyObject *__pyx_pf_16needleman_wunsch_needleman_wunsch(CYTHON_UNUSED PyOb
       goto __pyx_L19;
     }
 
-    /* "needleman_wunsch.pyx":70
+    /* "BCAR/needleman_wunsch.pyx":70
  *             i -= 1
  *         else:  # Left
  *             aligned_query.append(reference[j - 1] + 4)  # Insertion             # <<<<<<<<<<<<<<
@@ -3193,7 +3198,7 @@ static PyObject *__pyx_pf_16needleman_wunsch_needleman_wunsch(CYTHON_UNUSED PyOb
       __pyx_t_15 = __Pyx_PyList_Append(__pyx_v_aligned_query, __pyx_t_4); if (unlikely(__pyx_t_15 == ((int)-1))) __PYX_ERR(0, 70, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-      /* "needleman_wunsch.pyx":71
+      /* "BCAR/needleman_wunsch.pyx":71
  *         else:  # Left
  *             aligned_query.append(reference[j - 1] + 4)  # Insertion
  *             j -= 1             # <<<<<<<<<<<<<<
@@ -3205,7 +3210,7 @@ static PyObject *__pyx_pf_16needleman_wunsch_needleman_wunsch(CYTHON_UNUSED PyOb
     __pyx_L19:;
   }
 
-  /* "needleman_wunsch.pyx":73
+  /* "BCAR/needleman_wunsch.pyx":73
  *             j -= 1
  * 
  *     aligned_query.reverse()             # <<<<<<<<<<<<<<
@@ -3214,7 +3219,7 @@ static PyObject *__pyx_pf_16needleman_wunsch_needleman_wunsch(CYTHON_UNUSED PyOb
  */
   __pyx_t_15 = PyList_Reverse(__pyx_v_aligned_query); if (unlikely(__pyx_t_15 == ((int)-1))) __PYX_ERR(0, 73, __pyx_L1_error)
 
-  /* "needleman_wunsch.pyx":74
+  /* "BCAR/needleman_wunsch.pyx":74
  * 
  *     aligned_query.reverse()
  *     free(score_matrix)             # <<<<<<<<<<<<<<
@@ -3223,7 +3228,7 @@ static PyObject *__pyx_pf_16needleman_wunsch_needleman_wunsch(CYTHON_UNUSED PyOb
  */
   free(__pyx_v_score_matrix);
 
-  /* "needleman_wunsch.pyx":75
+  /* "BCAR/needleman_wunsch.pyx":75
  *     aligned_query.reverse()
  *     free(score_matrix)
  *     free(trace_matrix)             # <<<<<<<<<<<<<<
@@ -3231,7 +3236,7 @@ static PyObject *__pyx_pf_16needleman_wunsch_needleman_wunsch(CYTHON_UNUSED PyOb
  */
   free(__pyx_v_trace_matrix);
 
-  /* "needleman_wunsch.pyx":76
+  /* "BCAR/needleman_wunsch.pyx":76
  *     free(score_matrix)
  *     free(trace_matrix)
  *     return aligned_query             # <<<<<<<<<<<<<<
@@ -3241,7 +3246,7 @@ static PyObject *__pyx_pf_16needleman_wunsch_needleman_wunsch(CYTHON_UNUSED PyOb
   __pyx_r = __pyx_v_aligned_query;
   goto __pyx_L0;
 
-  /* "needleman_wunsch.pyx":19
+  /* "BCAR/needleman_wunsch.pyx":19
  *         return -mismatch
  * 
  * @cython.boundscheck(False)             # <<<<<<<<<<<<<<
@@ -3252,7 +3257,7 @@ static PyObject *__pyx_pf_16needleman_wunsch_needleman_wunsch(CYTHON_UNUSED PyOb
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_4);
-  __Pyx_AddTraceback("needleman_wunsch.needleman_wunsch", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("BCAR.needleman_wunsch.needleman_wunsch", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_aligned_query);
@@ -3277,9 +3282,10 @@ static PyMethodDef __pyx_methods[] = {
 
 static int __Pyx_CreateStringTabAndInitStrings(void) {
   __Pyx_StringTabEntry __pyx_string_tab[] = {
+    {&__pyx_n_s_BCAR_needleman_wunsch, __pyx_k_BCAR_needleman_wunsch, sizeof(__pyx_k_BCAR_needleman_wunsch), 0, 0, 1, 1},
     {&__pyx_kp_s_BCAR_needleman_wunsch_pyx, __pyx_k_BCAR_needleman_wunsch_pyx, sizeof(__pyx_k_BCAR_needleman_wunsch_pyx), 0, 0, 1, 0},
     {&__pyx_n_s_MemoryError, __pyx_k_MemoryError, sizeof(__pyx_k_MemoryError), 0, 0, 1, 1},
-    {&__pyx_kp_s_Unable_to_allocate_memory_for_ma, __pyx_k_Unable_to_allocate_memory_for_ma, sizeof(__pyx_k_Unable_to_allocate_memory_for_ma), 0, 0, 1, 0},
+    {&__pyx_kp_u_Unable_to_allocate_memory_for_ma, __pyx_k_Unable_to_allocate_memory_for_ma, sizeof(__pyx_k_Unable_to_allocate_memory_for_ma), 0, 1, 0, 0},
     {&__pyx_n_s__4, __pyx_k__4, sizeof(__pyx_k__4), 0, 0, 1, 1},
     {&__pyx_n_s_aligned_query, __pyx_k_aligned_query, sizeof(__pyx_k_aligned_query), 0, 0, 1, 1},
     {&__pyx_n_s_asyncio_coroutines, __pyx_k_asyncio_coroutines, sizeof(__pyx_k_asyncio_coroutines), 0, 0, 1, 1},
@@ -3323,18 +3329,18 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
-  /* "needleman_wunsch.pyx":32
+  /* "BCAR/needleman_wunsch.pyx":32
  * 
  *     if score_matrix is NULL or trace_matrix is NULL:
  *         raise MemoryError("Unable to allocate memory for matrices.")             # <<<<<<<<<<<<<<
  * 
  *     memset(score_matrix, 0, (q_len + 1) * (r_len + 1) * sizeof(int))
  */
-  __pyx_tuple_ = PyTuple_Pack(1, __pyx_kp_s_Unable_to_allocate_memory_for_ma); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 32, __pyx_L1_error)
+  __pyx_tuple_ = PyTuple_Pack(1, __pyx_kp_u_Unable_to_allocate_memory_for_ma); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 32, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple_);
   __Pyx_GIVEREF(__pyx_tuple_);
 
-  /* "needleman_wunsch.pyx":19
+  /* "BCAR/needleman_wunsch.pyx":19
  *         return -mismatch
  * 
  * @cython.boundscheck(False)             # <<<<<<<<<<<<<<
@@ -3685,14 +3691,14 @@ if (!__Pyx_RefNanny) {
   #if PY_MAJOR_VERSION < 3 && (__PYX_DEFAULT_STRING_ENCODING_IS_ASCII || __PYX_DEFAULT_STRING_ENCODING_IS_DEFAULT)
   if (__Pyx_init_sys_getdefaultencoding_params() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #endif
-  if (__pyx_module_is_main_needleman_wunsch) {
+  if (__pyx_module_is_main_BCAR__needleman_wunsch) {
     if (PyObject_SetAttr(__pyx_m, __pyx_n_s_name, __pyx_n_s_main) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   }
   #if PY_MAJOR_VERSION >= 3
   {
     PyObject *modules = PyImport_GetModuleDict(); if (unlikely(!modules)) __PYX_ERR(0, 1, __pyx_L1_error)
-    if (!PyDict_GetItemString(modules, "needleman_wunsch")) {
-      if (unlikely((PyDict_SetItemString(modules, "needleman_wunsch", __pyx_m) < 0))) __PYX_ERR(0, 1, __pyx_L1_error)
+    if (!PyDict_GetItemString(modules, "BCAR.needleman_wunsch")) {
+      if (unlikely((PyDict_SetItemString(modules, "BCAR.needleman_wunsch", __pyx_m) < 0))) __PYX_ERR(0, 1, __pyx_L1_error)
     }
   }
   #endif
@@ -3713,7 +3719,7 @@ if (!__Pyx_RefNanny) {
   if (__Pyx_patch_abc() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #endif
 
-  /* "needleman_wunsch.pyx":23
+  /* "BCAR/needleman_wunsch.pyx":23
  * def needleman_wunsch(
  *     list query, list reference,
  *     int match=2, int mismatch=1, int gap_penalty=2             # <<<<<<<<<<<<<<
@@ -3727,7 +3733,7 @@ if (!__Pyx_RefNanny) {
   __pyx_t_4 = __Pyx_PyInt_From_int(((int)2)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 23, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
 
-  /* "needleman_wunsch.pyx":19
+  /* "BCAR/needleman_wunsch.pyx":19
  *         return -mismatch
  * 
  * @cython.boundscheck(False)             # <<<<<<<<<<<<<<
@@ -3745,14 +3751,14 @@ if (!__Pyx_RefNanny) {
   __pyx_t_2 = 0;
   __pyx_t_3 = 0;
   __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_16needleman_wunsch_1needleman_wunsch, 0, __pyx_n_s_needleman_wunsch, NULL, __pyx_n_s_needleman_wunsch, __pyx_d, ((PyObject *)__pyx_codeobj__3)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 19, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_4BCAR_16needleman_wunsch_1needleman_wunsch, 0, __pyx_n_s_needleman_wunsch, NULL, __pyx_n_s_BCAR_needleman_wunsch, __pyx_d, ((PyObject *)__pyx_codeobj__3)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 19, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_4, __pyx_t_5);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_needleman_wunsch, __pyx_t_4) < 0) __PYX_ERR(0, 19, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "needleman_wunsch.pyx":1
+  /* "BCAR/needleman_wunsch.pyx":1
  * # cython: boundscheck=False, wraparound=False, nonecheck=False, cdivision=True             # <<<<<<<<<<<<<<
  * cimport cython
  * from libc.stdlib cimport malloc, free
@@ -3772,7 +3778,7 @@ if (!__Pyx_RefNanny) {
   __Pyx_XDECREF(__pyx_t_5);
   if (__pyx_m) {
     if (__pyx_d && stringtab_initialized) {
-      __Pyx_AddTraceback("init needleman_wunsch", __pyx_clineno, __pyx_lineno, __pyx_filename);
+      __Pyx_AddTraceback("init BCAR.needleman_wunsch", __pyx_clineno, __pyx_lineno, __pyx_filename);
     }
     #if !CYTHON_USE_MODULE_STATE
     Py_CLEAR(__pyx_m);
@@ -3786,7 +3792,7 @@ if (!__Pyx_RefNanny) {
     }
     #endif
   } else if (!PyErr_Occurred()) {
-    PyErr_SetString(PyExc_ImportError, "init needleman_wunsch");
+    PyErr_SetString(PyExc_ImportError, "init BCAR.needleman_wunsch");
   }
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
