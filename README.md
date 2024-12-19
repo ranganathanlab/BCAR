@@ -4,8 +4,7 @@ BCAR is a Python tool designed to process raw high-throughput sequencing data. I
 
 ## Features
 - Uses a fast implementation of the Needleman-Wunsch alignment algorithm to handle indels (insertions and deletions) between reads.
-- Supports scenarios where barcodes are located at fixed positions within reads.
-- Accepts any number of input .fastq or .fastq.gz files (or combinations thereof)
+- Accepts any number of input .fastq or .fastq.gz files (or combinations thereof). The files will be combined into a **single** barcode map.
 - Your barcodes and their counts will appear in the headers of your consensus reads
 - Empirical Bayes estimate of post-merged quality scores
 
@@ -26,7 +25,7 @@ cd BCAR
 ```
 
 ### 2. Build and Install
-BCAR relies on a Cython implementation of the Needleman-Wunsch alignment algorithm. Follow these steps to build and install:
+BCAR relies on a Cython for the slow steps of alignment and merging. Follow these steps to build and install:
 
 Ensure that you have `Cython` installed in your Python environment:
 ```bash
@@ -67,7 +66,7 @@ bcar [-h] --fwd FWD_FASTQS [FWD_FASTQS ...] --rev REV_FASTQS [REV_FASTQS ...] [-
    ```
 
 ## How BCAR Works
-BCAR leverages a fast Needleman-Wunsch alignment implementation to align reads associated with the same barcode. This accounts for sequencing errors such as substitutions, insertions, and deletions, ensuring accurate consensus reads.
+BCAR reads both barcodes and raw reads as memory-efficient python integers, grouping all reads from each barcode into a separate list. It then (optionally) aligns the reads from each barcode and calls the most frequent base at each position, using an empirical Bayesian strategy to assign a Q-score to the basecall. It returns a .fastq file containing one read for each barcode, with the barcode and the count in the header of each read.
 
 ## Contributing
 Contributions are welcome! Feel free to open issues or submit pull requests on the GitHub repository.
