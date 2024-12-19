@@ -1,3 +1,0 @@
-[console_scripts]
-bcar = BCAR.BCAR_v1_14:main
-
