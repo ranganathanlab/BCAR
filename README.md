@@ -20,7 +20,7 @@ BCAR is a Python tool designed to process raw high-throughput sequencing data. I
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/yourusername/BCAR.git
+git clone https://github.com/dry-brews/BCAR.git
 cd BCAR
 ```
 
