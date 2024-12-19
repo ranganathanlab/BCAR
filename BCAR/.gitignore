@@ -1,0 +1,16 @@
+# Build directories
+build/
+dist/
+
+# Compiled Python files
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+
+# Egg info
+*.egg-info/
+
+# Shared object files (from Cython)
+*.so
+
