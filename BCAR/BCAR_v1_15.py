@@ -49,8 +49,8 @@ def parse_arguments():
                         help="Number of threads to use (if left empty, will attempt to use max number available.)")
     parser.add_argument('--min-qscore', dest='min_qscore', type=int, default=20,
                         help="Reads are trashed if a base in the barcode or mapped region is below this quality score")
-    parser.add_argument('--min-agree', dest='min_agreement', type=float, default=0.7,
-                        help="Fraction of bases at each position in the consensus that must agree, else the barcode is trashed")
+    parser.add_argument('--min-count', dest='min_count', type=int, default=1,
+                        help="Minimum number of times to observe a barcode before it is reported")
     parser.add_argument('-a', '--align', action='store_true',
                         help="Whether to align reads prior to calling consensus (useful for indel-prone sequencers like NanoPore / Aviti)")
     return parser.parse_args()
@@ -114,9 +114,9 @@ def make_barcode_printables(list_of_twobit_bcs, fwd_list_of_lists, rev_list_of_l
         
         # align if requested
         if align_flag:
-            fwd_ali_seqs = [needleman_wunsch(seqs[0], seq) for seq in seqs]
+            fwd_ali_seqs = [needleman_wunsch(fwd_seqs[0], seq) for seq in fwd_seqs]
             fwd_ali_seqs = multi_align_lists(fwd_ali_seqs)
-            rev_ali_seqs = [needleman_wunsch(seqs[0], seq) for seq in seqs]
+            rev_ali_seqs = [needleman_wunsch(rev_seqs[0], seq) for seq in rev_seqs]
             rev_ali_seqs = multi_align_lists(rev_ali_seqs)
         else:
             fwd_ali_seqs = fwd_seqs
@@ -234,8 +234,6 @@ def main():
                     chunk_count += 1
                     if not eof_check:
                         sys.stderr.write(f"Processed {chunk_count * chunk_size} reads from {args.fwd_fastqs[file_num]}\n")
-        # Write to file
-        num_minibatches = chunk_size // mb_size // 10
         
     sys.stderr.write("Called %s barcodes in %s seconds\n" % (len(bc_fwd_map), round(time.time()-start_time,2)))
     sys.stderr.write("Writing to file...\n")
