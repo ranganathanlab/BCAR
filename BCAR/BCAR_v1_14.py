@@ -40,7 +40,7 @@ def parse_arguments():
                         help=".fastq file that will contain the consensus forward reads")
     parser.add_argument('--out2', dest='output_fastq_rev', type=str, default="./out.rev.fastq",
                         help=".fastq file that will contain the consensus reverse reads")
-    parser.add_argument('--BC-start', dest='bc_start', type=int, default=196,
+    parser.add_argument('--BC-start', dest='bc_start', type=int, default=0,
                         help="Position in the sequence where the barcode begins")
     parser.add_argument('--BC-len', dest='bc_len', type=int, default=15,
                         help="Length of the barcode")

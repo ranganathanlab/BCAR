@@ -3,12 +3,14 @@
 BCAR is a Python tool designed to process raw high-throughput sequencing data. Its primary purpose is to generate consensus reads for each barcode present in the data, eliminating idiosyncratic sequencing errors. This ensures accurate representation of the sequences associated with each barcode.
 
 ## Features
-- Processes paired-end sequencing data.
 - Uses a fast implementation of the Needleman-Wunsch alignment algorithm to handle indels (insertions and deletions) between reads.
 - Supports scenarios where barcodes are located at fixed positions within reads.
+- Accepts any number of input .fastq files
 
 ## Requirements
-- The barcode must occur at a **fixed location** in the read.
+- Current version only supports paired reads
+- The barcode must occur at a **fixed location** in the **forward** read.
+- If the barcode is on the reverse read, simply pass the reverse read to the --fwd option and vice versa. 
 - If the barcode position is not fixed but is adjacent to a constant sequence, you can preprocess your data using tools like [CutAdapt](https://cutadapt.readthedocs.io/) to trim your reads, ensuring that the barcodes are at a fixed location.
 
 ## Installation
@@ -34,14 +36,21 @@ pip install cython
 
 ## Usage
 Once installed, BCAR can be invoked as a command-line script. The typical usage is:
+
 ```bash
-bcar --input <input_file> --output <output_file> --barcode-position <position>
+bcar [-h] --fwd FWD_FASTQS [FWD_FASTQS ...] --rev REV_FASTQS [REV_FASTQS ...] [--out1 OUTPUT_FASTQ_FWD] [--out2 OUTPUT_FASTQ_REV] [--BC-start BC_START] [--BC-len BC_LEN] [--min-qscore MIN_QSCORE] [--min-agree MIN_AGREEMENT] [--min-count MIN_COUNT]
 ```
 
 ### Options:
-- `--input`: Path to the input paired-end read file (in FASTQ format).
-- `--output`: Path to the output file where consensus reads will be written.
-- `--barcode-position`: The fixed position of the barcode within the reads.
+- `--fwd FWD_FASTQS [FWD_FASTQS ...]`: List of `.fastq` or `.fastq.gz` files containing forward reads.
+- `--rev REV_FASTQS [REV_FASTQS ...]`: List of `.fastq` or `.fastq.gz` files containing reverse reads.
+- `--out1 OUTPUT_FASTQ_FWD`: Output `.fastq` file for the consensus forward reads.
+- `--out2 OUTPUT_FASTQ_REV`: Output `.fastq` file for the consensus reverse reads.
+- `--BC-start BC_START`: Position in the sequence where the barcode begins.
+- `--BC-len BC_LEN`: Length of the barcode.
+- `--min-qscore MIN_QSCORE`: Minimum quality score for bases in the barcode or mapped region; reads below this threshold are discarded.
+- `--min-agree MIN_AGREEMENT`: Fraction of bases at each position in the consensus that must agree, otherwise the barcode is discarded.
+- `--min-count MIN_COUNT`: Minimum number of times a barcode must appear to be included in the output.
 
 ### Example Workflow
 1. **Pre-trim Reads (if necessary)**:
@@ -52,7 +61,10 @@ bcar --input <input_file> --output <output_file> --barcode-position <position>
 
 2. **Run BCAR**:
    ```bash
-   bcar --input trimmed_reads.fastq --output consensus_reads.fastq --barcode-position 10
+   bcar --fwd forward_reads_1.fastq.gz forward_reads_2.fastq.gz \
+        --rev reverse_reads_1.fastq.gz reverse_reads_2.fastq.gz \
+        --out1 consensus_forward.fastq --out2 consensus_reverse.fastq \
+        --BC-start 10 --BC-len 16 --min-qscore 20 --min-agree 0.8 --min-count 5
    ```
 
 ## How BCAR Works
@@ -66,6 +78,6 @@ This project is licensed under the MIT License. See the `LICENSE` file for detai
 
 ---
 
-For further information, contact [Bryan Andrews](mailto:andrewsb@uchicago.edu).
+For further information, contact [Your Name](mailto:your.email@example.com).
 
 
