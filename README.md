@@ -7,10 +7,10 @@ BCAR is a Python tool designed to process raw high-throughput sequencing data. I
 - Supports scenarios where barcodes are located at fixed positions within reads.
 - Accepts any number of input .fastq or .fastq.gz files (or combinations thereof)
 - Your barcodes and their counts will appear in the headers of your consensus reads
+- Empirical Bayes estimate of post-merged quality scores
 
 ## Limitations
-- Current version only supports paired reads (planned improvements in future version)
-- No robust inference of qscores (planned improvements in future version)
+- Current version only supports paired reads (planned single read option in future version)
 
 ## Requirements
 - The barcode must occur at a **fixed location** in the **forward** read.
