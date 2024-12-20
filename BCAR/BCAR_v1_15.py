@@ -240,36 +240,35 @@ def main():
     
     # Write to file
     batch_size = 10000 #barcodes per process to find consensus and print    
-    with mp.Pool(processes=args.threads) as pool:
-        i=0
-        bc_batches  = []
-        fwd_batches = []
-        rev_batches = []
-        for bc in bc_fwd_map:
-            i+=1
-            bc_batches.append(bc)
-            fwd_batches.append(bc_fwd_map[bc])
-            rev_batches.append(bc_rev_map[bc])
-            if i >= (batch_size * args.threads):
-                with open(args.output_fastq_fwd,'w+') as fwd_out: #open once per batch size
-                    with open(args.output_fastq_rev,'w+') as rev_out:
-                        results= pool.starmap(
-                            make_barcode_printables,
-                            [(bc_batches[j:j+batch_size], fwd_batches[j:j+batch_size], rev_batches[j:j+batch_size],
-                             args.min_count, args.align)
-                            for j in range(0,i,batch_size)]
-                        )
-                        for res in results:
-                            for j in range(batch_size):
-                                fwd_out.write(res[0][j])
-                                rev_out.write(res[1][j])
-                        i=0
-                        bc_batches  = []
-                        fwd_batches = []
-                        rev_batches = []
-        # last loop around, pick up any remaining after last full-size batch
-        with open(args.output_fastq_fwd,'w+') as fwd_out: #open once per batch size
-            with open(args.output_fastq_rev,'w+') as rev_out:
+    with open(args.output_fastq_fwd,'w+') as fwd_out: #open once per batch size
+        with open(args.output_fastq_rev,'w+') as rev_out:
+            with mp.Pool(processes=args.threads) as pool:
+                i=0
+                bc_batches  = []
+                fwd_batches = []
+                rev_batches = []
+                for bc in bc_fwd_map:
+                    i+=1
+                    bc_batches.append(bc)
+                    fwd_batches.append(bc_fwd_map[bc])
+                    rev_batches.append(bc_rev_map[bc])
+                    if i >= (batch_size * args.threads):
+        
+                                results= pool.starmap(
+                                    make_barcode_printables,
+                                    [(bc_batches[j:j+batch_size], fwd_batches[j:j+batch_size], rev_batches[j:j+batch_size],
+                                     args.min_count, args.align)
+                                    for j in range(0,i,batch_size)]
+                                )
+                                for res in results:
+                                    for j in range(batch_size):
+                                        fwd_out.write(res[0][j])
+                                        rev_out.write(res[1][j])
+                                i=0
+                                bc_batches  = []
+                                fwd_batches = []
+                                rev_batches = []
+                # last loop around, pick up any remaining after last full-size batch
                 batch_size = len(bc_batches)//args.threads +1
                 results= pool.starmap(
                     make_barcode_printables,
