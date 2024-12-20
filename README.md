@@ -20,7 +20,7 @@ BCAR is a Python tool designed to process raw high-throughput sequencing data. I
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/yourusername/BCAR.git
+git clone https://github.com/dry-brews/BCAR.git
 cd BCAR
 ```
 
@@ -29,11 +29,17 @@ BCAR relies on a Cython for the slow steps of alignment and merging. Follow thes
 
 Ensure that you have `Cython` installed in your Python environment:
 ```bash
+conda install cython
+```
+or
+```bash
 pip install cython
 ```
-
+Then run
 ```bash
 python setup.py build
+```
+```bash
 python setup.py install
 ```
 
@@ -41,7 +47,7 @@ python setup.py install
 Once installed, BCAR can be invoked as a command-line script. The typical usage is:
 
 ```bash
-bcar [-h] --fwd FWD_FASTQS [FWD_FASTQS ...] --rev REV_FASTQS [REV_FASTQS ...] [--out1 OUTPUT_FASTQ_FWD] [--out2 OUTPUT_FASTQ_REV] [--BC-start BC_START] [--BC-len BC_LEN] [--min-qscore MIN_QSCORE] [--min-count MIN_COUNT]
+bcar [-h] --fwd FWD_FASTQS [FWD_FASTQS ...] --rev REV_FASTQS [REV_FASTQS ...] [--out1 OUTPUT_FASTQ_FWD] [--out2 OUTPUT_FASTQ_REV] [--BC-start BC_START] [--BC-len BC_LEN] [--min-qscore MIN_QSCORE] [--min-count MIN_COUNT] [--align]
 ```
 
 ### Example Workflow
