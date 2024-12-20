@@ -43,6 +43,11 @@ python setup.py build
 python setup.py install
 ```
 
+To test your installation:
+'''bash
+bcar --fwd Test_barcodes.fastq --rev Test_barcodes.fastq --align
+'''
+
 ## Usage
 Once installed, BCAR can be invoked as a command-line script. The typical usage is:
 
