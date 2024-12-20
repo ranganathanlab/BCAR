@@ -45,6 +45,7 @@ python setup.py install
 
 To test your installation:
 ```bash
+cd test
 bcar --fwd Test_barcodes.fastq --rev Test_barcodes.fastq --align
 ```
 
