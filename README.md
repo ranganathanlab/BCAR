@@ -1,6 +1,6 @@
 # BCAR: Barcode Collapse by Aligning Reads
 
-BCAR is a Python tool designed to process raw high-throughput sequencing data. Its primary purpose is to generate consensus reads for each barcode present in the data, eliminating idiosyncratic sequencing errors. This ensures accurate representation of the sequences associated with each barcode.
+BCAR is a Python/Cython tool designed to merge raw sequencing reads based on shared barcode identity. It will correct sequencing errors (mismatch by default and also indels with the --align flag) and produce a single consensus read for each barcode in your library. The Q-scores attached to the consensus read are based on the observed frequency of the consensus base among the raw reads at each position (post-alignment, if aligned).
 
 ## Features
 - Uses a fast implementation of the Needleman-Wunsch alignment algorithm to handle indels (insertions and deletions) between reads.
