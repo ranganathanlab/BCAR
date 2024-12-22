@@ -3,6 +3,8 @@
 Created on Tue Dec 10 17:10:30 2024
 
 @author: bryan
+
+Last debugging on 12/22/2024
 """
 
 import gzip
@@ -11,14 +13,16 @@ import sys
 import argparse
 import time
 import math
-from .needleman_wunsch import needleman_wunsch
-from .build_consensus import build_consensus
+from needleman_wunsch import needleman_wunsch
+from build_consensus import build_consensus
 
 #initialize generic things
 twobit_basespace = {'A':0, 'C':1, 'G':2, 'T':3}
 alignment_basespace = {"-": 0,'A': 1,'C': 2,'G': 3,'T': 4,'a': 5,'c': 6,'g': 7,'t': 8,'N': 9}
 rev_bases =           {0: '-',1: 'A',2: 'C',3: 'G',4: 'T',5: 'a',6: 'c',7: 'g',8: 't',9: 'N'}
 start_time = time.time()
+
+alignment_time = time.time()
 
 def open_fastq_file(filename):
     """Opens a FASTQ file, handling gzip compression if necessary."""
@@ -59,6 +63,8 @@ def seq_to_twobit(seq, encode_size = 4):
     # converts a string of bases into an integer for data compression
     # only accepts A,C,G,T, so filter reads before getting here
     int_list = [twobit_basespace[seq[i]]*encode_size**i for i in range(len(seq))]
+    #add capping "C" to prevent trailing A's from getting ignored (since they would add zero)
+    int_list.append(encode_size**len(seq))
     return sum(int_list)
 
 def twobit_to_seq(seq_int, encode_size = 4):
@@ -68,12 +74,13 @@ def twobit_to_seq(seq_int, encode_size = 4):
 
 def twobit_to_list(seq_int, encode_size=4): #encoded in ACTG -> 0123
     # converts two-bit encoded integer to base-10 encoded list
-    seq_len = int(math.log(seq_int, encode_size))
+    seq_len = max([int(math.log(seq_int, encode_size)),0])
     seq_list = []
     for i in range(seq_len, -1, -1): #backwards through sequence
-        seq_list.append(seq_int//encode_size**i+1)
+        seq_list.append(seq_int//encode_size**i+1) # +1 to encode to ACTG -> 1234
         seq_int = seq_int % encode_size**i
-    return seq_list[::-1] #encoded in ACTG -> 1234
+    seq_list = seq_list[::-1] #reverse list
+    return seq_list[:-1] #remove capping "C"
 
 def multi_align_lists(ali_lists):
     # determine max possible sequence length after inserting gaps
@@ -99,41 +106,77 @@ def multi_align_lists(ali_lists):
     return ali_lists
 
 def make_barcode_printables(list_of_twobit_bcs, fwd_list_of_lists, rev_list_of_lists, min_count, align_flag):
+    conversion_time = 0.
+    alignment_time  = 0.
+    consensus_time  = 0.
+    
+    
     fwd_results_list = [] #where strings to print will go
     rev_results_list = []
     for i in range(len(list_of_twobit_bcs)):
-        # check count
+
+        # check count and skip if below minimum
         count = len(fwd_list_of_lists[i])
         if count < min_count:
             continue
         
+        #if only one read, no need to align or build consensus
+        if count == 1:
+            bc_seq = twobit_to_seq(list_of_twobit_bcs[i])
+            fwd_seq = twobit_to_seq(fwd_list_of_lists[i][0])
+            rev_seq = twobit_to_seq(rev_list_of_lists[i][0])
+            fwd_results_list.append("@fwd_consensus_bc_read;bc=%s;count=1\n%s\n+\n%s\n" % (
+                bc_seq,
+                fwd_seq,
+                ''.join(["4" for q in range(len(fwd_seq))]))
+                )
+            rev_results_list.append("@rev_consensus_bc_read;bc=%s;count=1\n%s\n+\n%s\n" % (
+                bc_seq,
+                rev_seq,
+                ''.join(["4" for q in range(len(rev_seq))]))
+                )
+            continue
+        
+        #else, do full processing
         # convert out of integer space
+        temp_time = time.time()
         bc_seq = twobit_to_seq(list_of_twobit_bcs[i])
         fwd_seqs = [twobit_to_list(seq) for seq in fwd_list_of_lists[i]]
         rev_seqs = [twobit_to_list(seq) for seq in rev_list_of_lists[i]]
-        
+        conversion_time += (time.time()-temp_time)
         # align if requested
+        
         if align_flag:
+            temp_time = time.time()
             fwd_ali_seqs = [needleman_wunsch(fwd_seqs[0], seq) for seq in fwd_seqs]
             fwd_ali_seqs = multi_align_lists(fwd_ali_seqs)
             rev_ali_seqs = [needleman_wunsch(rev_seqs[0], seq) for seq in rev_seqs]
             rev_ali_seqs = multi_align_lists(rev_ali_seqs)
+            alignment_time += (time.time()-temp_time)
         else:
             fwd_ali_seqs = fwd_seqs
             rev_ali_seqs = rev_seqs
         
         # make consensus sequences
+        temp_time = time.time()
         fwd_cons_seq, fwd_cons_q = build_consensus(fwd_ali_seqs)
         rev_cons_seq, rev_cons_q = build_consensus(rev_ali_seqs)
+        consensus_time += (time.time()-temp_time)
         
         # format to fastq strings
-        fwd_cons_seq = ''.join([rev_bases[b] for b in fwd_cons_seq])
-        fwd_cons_q   = ''.join([chr(q + 33) for q in fwd_cons_q])
-        rev_cons_seq = ''.join([rev_bases[b] for b in rev_cons_seq])
-        rev_cons_q   = ''.join([chr(q + 33) for q in rev_cons_q])
-        fwd_results_list.append("@fwd_consensus_bc_read;bc=%s;count=%s\n%s\n+\n%s\n" % (bc_seq, count, fwd_cons_seq, fwd_cons_q))
-        rev_results_list.append("@rev_consensus_bc_read;bc=%s;count=%s\n%s\n+\n%s\n" % (bc_seq, count, rev_cons_seq, rev_cons_q))
-        
+        fwd_results_list.append("@fwd_consensus_bc_read;bc=%s;count=%s\n%s\n+\n%s\n" % (
+            bc_seq,
+            count,
+            ''.join([rev_bases[b] for b in fwd_cons_seq]),
+            ''.join([chr(q + 33) for q in fwd_cons_q]))
+            )
+        rev_results_list.append("@rev_consensus_bc_read;bc=%s;count=%s\n%s\n+\n%s\n" % (
+            bc_seq,
+            count,
+            ''.join([rev_bases[b] for b in rev_cons_seq]),
+            ''.join([chr(q + 33) for q in rev_cons_q]))
+            )
+    sys.stderr.write("spent %s seconds on conversion, %s seconds on alignment, and %s seconds on consensus building\n" % (conversion_time, alignment_time, consensus_time))
     return fwd_results_list, rev_results_list
 
 def read_fastq_chunk(open_fastq_file, chunk_size=50000):
@@ -239,8 +282,8 @@ def main():
     sys.stderr.write("Writing to file...\n")
     
     # Write to file
-    batch_size = 10000 #barcodes per process to find consensus and print    
-    with open(args.output_fastq_fwd,'w+') as fwd_out: #open once per batch size
+    batch_size = 1000 #barcodes per process to find consensus and print    
+    with open(args.output_fastq_fwd,'w+') as fwd_out:
         with open(args.output_fastq_rev,'w+') as rev_out:
             with mp.Pool(processes=args.threads) as pool:
                 i=0
@@ -252,8 +295,8 @@ def main():
                     bc_batches.append(bc)
                     fwd_batches.append(bc_fwd_map[bc])
                     rev_batches.append(bc_rev_map[bc])
-                    if i >= (batch_size * args.threads):
-        
+                    if i == (batch_size * args.threads):
+
                                 results= pool.starmap(
                                     make_barcode_printables,
                                     [(bc_batches[j:j+batch_size], fwd_batches[j:j+batch_size], rev_batches[j:j+batch_size],
@@ -262,12 +305,19 @@ def main():
                                 )
                                 for res in results:
                                     for j in range(batch_size):
-                                        fwd_out.write(res[0][j])
-                                        rev_out.write(res[1][j])
+                                        try:
+                                            fwd_out.write(res[0][j])
+                                            rev_out.write(res[1][j])
+                                        except IndexError:
+                                            break
+   
                                 i=0
                                 bc_batches  = []
                                 fwd_batches = []
                                 rev_batches = []
+                                #sys.stderr.write("finished printing chunk\n")
+                
+                
                 # last loop around, pick up any remaining after last full-size batch
                 batch_size = len(bc_batches)//args.threads +1
                 results= pool.starmap(
@@ -283,7 +333,7 @@ def main():
                             rev_out.write(res[1][j])
                         except IndexError:
                             break
-                        
+                
     sys.stderr.write("finished in %s seconds\n" % round(time.time()-start_time,2))
 
 if __name__ == "__main__":
