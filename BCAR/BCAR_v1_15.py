@@ -303,7 +303,7 @@ def main():
                                       args.align)
                         results.append(pool.apply_async(make_barcode_printables, args_tuple))
             for result in results:
-                res = result.get(timeout=600)  # Collect results
+                res = result.get()  # Collect results
                 if res is not None:
                     for j in range(batch_size):
                         try:
