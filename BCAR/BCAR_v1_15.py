@@ -11,8 +11,8 @@ import sys
 import argparse
 import time
 import math
-from needleman_wunsch import needleman_wunsch
-from build_consensus import build_consensus
+from .needleman_wunsch import needleman_wunsch
+from .build_consensus import build_consensus
 
 #initialize generic things
 twobit_basespace = {'A':0, 'C':1, 'G':2, 'T':3}
