@@ -13,8 +13,8 @@ import sys
 import argparse
 import time
 import math
-from .needleman_wunsch import needleman_wunsch
-from .build_consensus import build_consensus
+from needleman_wunsch import needleman_wunsch
+from build_consensus import build_consensus
 
 #initialize generic things
 twobit_basespace = {'A':0, 'C':1, 'G':2, 'T':3}
@@ -176,7 +176,7 @@ def make_barcode_printables(list_of_twobit_bcs, fwd_list_of_lists, rev_list_of_l
             ''.join([rev_bases[b] for b in rev_cons_seq]),
             ''.join([chr(q + 33) for q in rev_cons_q]))
             )
-    sys.stderr.write("spent %s seconds on conversion, %s seconds on alignment, and %s seconds on consensus building\n" % (conversion_time, alignment_time, consensus_time))
+    #sys.stderr.write("spent %s seconds on conversion, %s seconds on alignment, and %s seconds on consensus building\n" % (conversion_time, alignment_time, consensus_time))
     return fwd_results_list, rev_results_list
 
 def read_fastq_chunk(open_fastq_file, chunk_size=50000):
@@ -277,63 +277,40 @@ def main():
                     chunk_count += 1
                     if not eof_check:
                         sys.stderr.write(f"Processed {chunk_count * chunk_size} reads from {args.fwd_fastqs[file_num]}\n")
-        
+
     sys.stderr.write("Called %s barcodes in %s seconds\n" % (len(bc_fwd_map), round(time.time()-start_time,2)))
     sys.stderr.write("Writing to file...\n")
     
-    # Write to file
-    batch_size = 1000 #barcodes per process to find consensus and print    
-    with open(args.output_fastq_fwd,'w+') as fwd_out:
-        with open(args.output_fastq_rev,'w+') as rev_out:
-            with mp.Pool(processes=args.threads) as pool:
-                i=0
-                bc_batches  = []
-                fwd_batches = []
-                rev_batches = []
-                for bc in bc_fwd_map:
-                    i+=1
-                    bc_batches.append(bc)
-                    fwd_batches.append(bc_fwd_map[bc])
-                    rev_batches.append(bc_rev_map[bc])
-                    if i == (batch_size * args.threads):
+    # Convert dictionaries to matched-order lists
+    bc_list  = list(bc_fwd_map.keys())
+    fwd_list = []
+    rev_list = []
+    for i in range(len(bc_list)):
+        fwd_list.append(bc_fwd_map.pop(bc_list[i]))
+        rev_list.append(bc_rev_map.pop(bc_list[i]))
 
-                                results= pool.starmap(
-                                    make_barcode_printables,
-                                    [(bc_batches[j:j+batch_size], fwd_batches[j:j+batch_size], rev_batches[j:j+batch_size],
-                                     args.min_count, args.align)
-                                    for j in range(0,i,batch_size)]
-                                )
-                                for res in results:
-                                    for j in range(batch_size):
-                                        try:
-                                            fwd_out.write(res[0][j])
-                                            rev_out.write(res[1][j])
-                                        except IndexError:
-                                            break
-   
-                                i=0
-                                bc_batches  = []
-                                fwd_batches = []
-                                rev_batches = []
-                                #sys.stderr.write("finished printing chunk\n")
-                
-                
-                # last loop around, pick up any remaining after last full-size batch
-                batch_size = len(bc_batches)//args.threads +1
-                results= pool.starmap(
-                    make_barcode_printables,
-                    [(bc_batches[j:j+batch_size], fwd_batches[j:j+batch_size], rev_batches[j:j+batch_size],
-                     args.min_count, args.align)
-                    for j in range(0,i,batch_size)]
-                )
-                for res in results:
+    # Print to file
+    with open(args.output_fastq_fwd,'w+') as fwd_out, open(args.output_fastq_rev,'w+') as rev_out:
+        with mp.Pool(processes=args.threads) as pool:
+            batch_size = 100
+            results = []
+            # Set up solve
+            for i in range(0, len(bc_list), batch_size):
+                        args_tuple = (bc_list[i:i + batch_size],
+                                      fwd_list[i:i + batch_size],
+                                      rev_list[i:i + batch_size],
+                                      args.min_count,
+                                      args.align)
+                        results.append(pool.apply_async(make_barcode_printables, args_tuple))
+            for result in results:
+                res = result.get(timeout=600)  # Collect results
+                if res is not None:
                     for j in range(batch_size):
                         try:
                             fwd_out.write(res[0][j])
                             rev_out.write(res[1][j])
                         except IndexError:
                             break
-                
     sys.stderr.write("finished in %s seconds\n" % round(time.time()-start_time,2))
 
 if __name__ == "__main__":
