@@ -7,9 +7,10 @@ BCAR is a Python/Cython tool designed to merge raw sequencing reads based on sha
 - Accepts any number of input .fastq or .fastq.gz files (or combinations thereof). The files will be combined into a **single** barcode map.
 - Your barcodes and their counts will appear in the headers of your consensus reads
 - Empirical Bayes estimate of post-merged quality scores
+- (New!) Works in single-read or paired end mode, depending on whether the --rev flag is included
 
 ## Limitations
-- Current version only supports paired reads (planned single read option in future version)
+- Does not consider the quality scores of the input reads
 
 ## Requirements
 - The barcode must occur at a **fixed location** in the **forward** read.
