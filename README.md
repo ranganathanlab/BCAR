@@ -26,7 +26,7 @@ cd BCAR
 ```
 
 ### 2. Build and Install
-BCAR relies on a Cython for the slow steps of alignment and merging. Follow these steps to build and install:
+BCAR relies on Cython for the slow steps of alignment and merging. Follow these steps to build and install:
 
 Ensure that you have `Cython` installed in your Python environment:
 ```bash
@@ -49,6 +49,9 @@ To test your installation:
 cd test
 bcar --fwd Test_barcodes.fastq --rev Test_barcodes.fastq --align
 ```
+
+## Troubleshooting
+Ensure that you are using python 3.8 or later. Running setup.py may fail if you don't have the correct permissions. In this case, run "sudo python setup.py build". If you use a python -> python3 alias, you may need to run "sudo python3 setup.py build" instead.
 
 ## Usage
 Once installed, BCAR can be invoked as a command-line script. The typical usage is:
